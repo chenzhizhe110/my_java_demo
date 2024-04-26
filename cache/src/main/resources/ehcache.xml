@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+
+    <!--
+        磁盘存储:将缓存中暂时不使用的对象,转移到硬盘,类似于Windows系统的虚拟内存
+        path:指定在硬盘上存储对象的路径
+        path可以配置的目录有：
+            user.home（用户的家目录）
+            user.dir（用户当前的工作目录）
+            java.io.tmpdir（默认的临时目录）
+            ehcache.disk.store.dir（ehcache的配置目录）
+            绝对路径（如：d:\\ehcache）
+        查看路径方法：String tmpDir = System.getProperty("java.io.tmpdir");
+     -->
+    <diskStore path="/data/ehcache_demo" />
+
+    <!--
+        defaultCache:默认的缓存配置信息,如果不加特殊说明,则所有对象按照此配置项处理
+        maxElementsInMemory:设置了缓存的上限,最多存储多少个记录对象
+        eternal:代表对象是否永不过期 (指定true则下面两项配置需为0无限期)
+        timeToIdleSeconds:最大的发呆时间 /秒  当对象自从最近一次被访问后，如果处于空闲状态的时间超过了timeToIdleSeconds属性值，这个对象就会过期
+        timeToLiveSeconds:最大的存活时间 /秒  当对象自从被存放到缓存中后，如果处于缓存中的时间超过了 timeToLiveSeconds属性值,这个对象就会过期
+        overflowToDisk: 是否允许对象被写入到磁盘属性用来配置当缓存存储的数据达到maxInMemory限制时是否overflow到磁盘上。如果这个属 性为true，那么要求缓存的数据必须是可序列化的
+        memoryStoreEvictionPolicy:可选策略有：LRU（最近最少使用，默认策略）、FIFO（先进先出）、LFU（最少访问次数）。
+        clearOnFlush：内存数量最大时是否清除。
+     -->
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            maxElementsOnDisk="10000000"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>
+    </defaultCache>
+
+     <!--alert 从当天算起的前1000根k线行情  timeToIdleSeconds 0 表示永不过期 maxElementsInMemory="1000"-->
+    <cache name="kline_long" maxElementsInMemory="1" eternal="true"
+     overflowToDisk="true" diskPersistent="true" timeToIdleSeconds="0" timeToLiveSeconds="0"
+           maxElementsOnDisk="20000000">
+
+    </cache>
+
+
+
+      
+
+
+</ehcache>
+

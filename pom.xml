@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>mutiple_dynamic_data_source</module>
+        <module>cache</module>
     </modules>
 
 

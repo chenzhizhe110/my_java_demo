@@ -1,0 +1,35 @@
+server:
+  port: 8083
+  tomcat:
+    relaxed-query-chars:
+      - '['
+      - ']'
+      - '{'
+      - '}'
+  servlet:
+    context-path: /ehcache
+
+#spring:
+#  cache:
+#    type: ehcache
+#    ehcache:
+#      config: classpath:/ehcache.xml
+
+spring:
+  cache:
+    type: simple
+    cache-names: kline_long
+  redis:
+    host: 127.0.0.1
+    #host: 123.207.182.155
+    port: 6379
+    database: 0
+    #password: spdspdspd
+    password:
+
+
+
+
+
+
+
