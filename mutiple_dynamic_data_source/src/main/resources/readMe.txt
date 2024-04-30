@@ -1,4 +1,4 @@
-1.springboot+mybatis 配置3个mysql数据库，3个mysql数据库的表结构一样，希望根据业务能动态选择调用哪个数据。
+1.springboot+mybatis 配置3个mysql数据库，3个mysql数据库的表结构一样，希望根据业务参数能动态选择调用哪个数据。
 
 在 Spring Boot 中结合 MyBatis 配置多个 MySQL 数据库，并根据业务动态选择调用其中一个数据库，可以通过配置多个数据源和动态数据源路由来实现。下面是一种实现方式的简要说明：
 
@@ -92,3 +92,11 @@ public DataSource dataSource3() {
 DataSourceContextHolder.clearDataSourceKey();
 
 通过以上步骤，你可以在 Spring Boot 中配置多个 MySQL 数据源，并根据业务动态选择调用其中一个数据源来进行操作。需要根据具体业务逻辑来确定何时切换数据源以及使用哪个数据源。
+
+
+6.测试
+输入 http://localhost:8081/mds/list_course?ds=datasource1   查询数据源datasource1的数据
+输入 http://localhost:8081/mds/list_course?ds=datasource2   查询数据源datasource2的数据
+
+
+

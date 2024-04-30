@@ -15,10 +15,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableCaching
 @EnableScheduling
-public class EhcacheApplication {
+public class MoreLevelCacheApplication {
     public static void main(String[] args) {
         {
-            SpringApplication.run(EhcacheApplication.class, args);
+            SpringApplication.run(MoreLevelCacheApplication.class, args);
         }
     }
 

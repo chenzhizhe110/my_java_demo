@@ -14,22 +14,26 @@ server:
 #    type: ehcache
 #    ehcache:
 #      config: classpath:/ehcache.xml
-
 spring:
-  cache:
-    type: simple
-    cache-names: kline_long
   redis:
     host: 127.0.0.1
-    #host: 123.207.182.155
     port: 6379
     database: 0
-    #password: spdspdspd
     password:
+    jedis:
+      pool:
+        max-active: 16
+        min-idle: 8
+        max-wait: 30
 
+moreLevel:
+  enable: true
+  redisData: N:2,N:3,N:4,N:7,N:8,O:2,O:3
 
-
-
-
+logging:
+  level:
+    net:
+      sf:
+        ehcache: DEBUG
 
 

@@ -17,7 +17,7 @@ public class MonitorSystemScheduled {
 
     private final Logger log= LoggerFactory.getLogger(MonitorSystemScheduled.class);
 
-    @Scheduled(initialDelay =3*1000,fixedDelay =5*1000 )
+  //  @Scheduled(initialDelay =3*1000,fixedDelay =5*1000 )
     public void memory(){
         Runtime run = Runtime.getRuntime();
         long max = run.maxMemory()/1024/1024;

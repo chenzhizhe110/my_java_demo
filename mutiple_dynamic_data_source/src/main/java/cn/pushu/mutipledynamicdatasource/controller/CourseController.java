@@ -21,7 +21,8 @@ public class CourseController {
 
      @Resource
      private CourseMapper courseMapper;
-
+//输入 http://localhost:8081/mds/list_course?ds=datasource1   查询数据源datasource1的数据
+//输入 http://localhost:8081/mds/list_course?ds=datasource2   查询数据源datasource2的数据
      @GetMapping("/list_course")
      public   List<Course> listCourse(String ds){
           DataSourceContextHolder.setDataSourceKey(ds);

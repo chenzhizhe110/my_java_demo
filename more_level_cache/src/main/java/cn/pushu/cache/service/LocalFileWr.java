@@ -4,7 +4,6 @@ import cn.pushu.cache.entity.PushTimeBar;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,7 +62,6 @@ public class LocalFileWr {
         return result;
     }
 
-
     //写10000 总共用时:20981
 //写1000000 总共用时:2040410   批量处理:总共用时:2811
 //读100000 总共用时 148ms
@@ -79,9 +77,9 @@ public class LocalFileWr {
 //       writeKline(timeBars);
 
 
-     List<PushTimeBar> readKlines = readKline();
- //System.out.println("数据总量:"+readKlines.size());
-       readKlines.forEach(x->System.out.println(x));
+       List<PushTimeBar> readKlines = readKline();
+      //System.out.println("数据总量:"+readKlines.size());
+        readKlines.forEach(x->System.out.println(x));
 
         System.out.println("总共用时:"+(System.currentTimeMillis()-s));
     }

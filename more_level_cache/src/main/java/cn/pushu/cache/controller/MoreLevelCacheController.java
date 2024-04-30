@@ -24,7 +24,7 @@ public class MoreLevelCacheController {
     private  KlineMoreLevelCacheImpl klineMoreLevelCacheImpl;
 
     @GetMapping("int_kline_date")
-    public void  initKlineDate(String prodCode,byte period,int count){
+    public String  initKlineDate(String prodCode,byte period,int count){
         List<PushTimeBar> timeBars=new ArrayList<PushTimeBar>();
         for(int i=0;i<=count;i++){
             PushTimeBar timeBar=new PushTimeBar(prodCode,period,i,i,  i,i,i,i);
@@ -32,6 +32,7 @@ public class MoreLevelCacheController {
             timeBars.add(timeBar);
         }
         klineMoreLevelCacheImpl.loadInitKlineDate(null,prodCode,period,timeBars);
+        return  prodCode+":"+period+" ";
     }
 
     @GetMapping("list_kline_date")

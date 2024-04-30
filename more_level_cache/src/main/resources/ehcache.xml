@@ -12,7 +12,7 @@
             绝对路径（如：d:\\ehcache）
         查看路径方法：String tmpDir = System.getProperty("java.io.tmpdir");
      -->
-    <diskStore path="/data/ehcache_demo" />
+    <diskStore path="/data/ehcache_demo"/>
 
     <!--
         defaultCache:默认的缓存配置信息,如果不加特殊说明,则所有对象按照此配置项处理
@@ -23,8 +23,8 @@
         overflowToDisk: 是否允许对象被写入到磁盘属性用来配置当缓存存储的数据达到maxInMemory限制时是否overflow到磁盘上。如果这个属 性为true，那么要求缓存的数据必须是可序列化的
         memoryStoreEvictionPolicy:可选策略有：LRU（最近最少使用，默认策略）、FIFO（先进先出）、LFU（最少访问次数）。
         clearOnFlush：内存数量最大时是否清除。
-     -->
-    <defaultCache
+
+        <defaultCache
             maxElementsInMemory="10000"
             eternal="false"
             timeToIdleSeconds="120"
@@ -34,17 +34,17 @@
             memoryStoreEvictionPolicy="LRU">
         <persistence strategy="localTempSwap"/>
     </defaultCache>
+ -->
+
 
      <!--alert 从当天算起的前1000根k线行情  timeToIdleSeconds 0 表示永不过期 maxElementsInMemory="1000"-->
     <cache name="kline_long" maxElementsInMemory="1" eternal="true"
-     overflowToDisk="true" diskPersistent="true" timeToIdleSeconds="0" timeToLiveSeconds="0"
-           maxElementsOnDisk="20000000">
-
+           overflowToDisk="true" diskPersistent="true" timeToIdleSeconds="0" timeToLiveSeconds="0"
+          >
+        <BootstrapCacheLoaderFactory
+                class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory"
+                properties="bootstrapAsynchronously=true" />
     </cache>
-
-
-
-      
 
 
 </ehcache>
